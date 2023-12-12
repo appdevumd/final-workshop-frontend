@@ -6,7 +6,11 @@ import ReviewForm from "./ReviewForm";
 const ReviewsList = ({  }) => {
     const [reviews, setReviews] = useState([]);
 
-    // update reviews on page refresh
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/about/reviews')
+        .then((res) => res.json())
+        .then((res) => setReviews(res['reviews']));
+    }, []);
 
     return (
         <div>

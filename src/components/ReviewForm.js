@@ -15,10 +15,19 @@ const ReviewForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     try {
       // make POST request
+      const response = await fetch('http://127.0.0.1:8000/about/add_review',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         console.log('Review submitted successfully');
